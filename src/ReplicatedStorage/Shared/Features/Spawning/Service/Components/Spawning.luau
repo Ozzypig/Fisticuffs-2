@@ -91,7 +91,7 @@ end
 
 function SpawningComponent:EnableSpawningOnLoad()
 	local function onLoaded()
-		self:SetSpawning(true)
+		self:SetSpawning(true, true)
 	end
 	local loadStatus = ClientLoadStatus.PlayerCache:Get(self.Player)
 	if loadStatus == GameEnums.GameLoadStatus.Started then
