@@ -5,4 +5,4 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Client = require(ReplicatedStorage.Client)
 
-Client.Main()
+Client.Main():expect()
