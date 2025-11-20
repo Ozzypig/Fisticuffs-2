@@ -4,12 +4,12 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local t = require(ReplicatedStorage.Packages.t)
 
 local tFeatureModule = t.strictInterface({
-	Init = t.callback,
-	Start = t.callback,
+	Init = t.optional(t.callback),
+	Start = t.optional(t.callback),
 })
 export type FeatureModule = {
-	Init: () -> (),
-	Start: () -> (),
+	Init: (() -> ())?,
+	Start: (() -> ())?,
 }
 
 local tFeature = t.strictInterface({
