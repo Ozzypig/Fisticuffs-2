@@ -19,8 +19,8 @@ local tFeature = t.strictInterface({
 })
 export type Feature = {
 	Name: string,
-	Service: any,
-	Controller: any,
+	Service: FeatureModule,
+	Controller: FeatureModule,
 }
 
 local Features: { Feature } = {}
