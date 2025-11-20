@@ -5,26 +5,18 @@
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local t = require(ReplicatedStorage.Packages.t)
 local Logging = require(ReplicatedStorage.Packages.Logging)
 local Promise = require(ReplicatedStorage.Packages.Promise)
-local Comm = require(ReplicatedStorage.Packages.Comm)
 
 local GameEnums = require(ReplicatedStorage.Shared.GameEnums)
 local LoadUtil = require(ReplicatedStorage.Shared.LoadUtil)
 
 local Server = {}
 
-local serverComm = Comm.ServerComm.new(ReplicatedStorage, "Server")
-local statusProperty = serverComm:CreateProperty("LoadStatus", GameEnums.ServerStatus.Loading)
-local logger = Logging:getLogger("Server")
+local ClientLoadStatus = require(script.ClientLoadStatus)
+local ServerLoadStatus = require(script.ServerLoadStatus)
 
-local tSetStatus = t.tuple(GameEnums.tServerStatus)
-function Server.SetStatus(newStatus: GameEnums.ServerStatus)
-	assert(tSetStatus(newStatus))
-	statusProperty:Set(newStatus)
-	logger:debug("Status changed to %s", newStatus)
-end
+local logger = Logging:getLogger("Server")
 
 function Server.Init(): Promise.Promise<>
 	return LoadUtil.EachFeatureCallAsync(logger, "Service", "Init")
@@ -36,14 +28,14 @@ end
 
 function Server.Main(): Promise.Promise<>
 	LoadUtil.InitLogging()
+	ServerLoadStatus.Set(GameEnums.GameLoadStatus.Starting)
 	local promise = Promise.resolve()
-		:andThenCall(Server.SetStatus, GameEnums.ServerStatus.Starting)
 		:andThenCall(logger.debug, logger, "Main")
 		:andThenCall(Server.Init)
 		:andThenCall(Server.Start)
-		:andThenCall(Server.SetStatus, GameEnums.ServerStatus.Started)
+		:andThenCall(ServerLoadStatus.Set, GameEnums.GameLoadStatus.Started)
 	promise:catch(function()
-		Server.SetStatus(GameEnums.ServerStatus.Crashed)
+		ServerLoadStatus.Set(GameEnums.GameLoadStatus.Crashed)
 	end)
 	return promise
 end

@@ -1,4 +1,4 @@
-export type ServerStatus = "Loading" | "Starting" | "Started" | "Crashed"
+export type GameLoadStatus = "Loading" | "Starting" | "Started" | "Crashed"
 
 return {
 	Loading = "Loading",

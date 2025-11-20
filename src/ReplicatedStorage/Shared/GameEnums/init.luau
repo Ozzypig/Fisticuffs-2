@@ -3,13 +3,13 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local t = require(ReplicatedStorage.Packages.t)
 
-local ServerStatus = require(script.ServerStatus)
+local GameLoadStatus = require(script.GameLoadStatus)
 
-export type ServerStatus = ServerStatus.ServerStatus
+export type GameLoadStatus = GameLoadStatus.GameLoadStatus
 
 local GameEnums = {
-	ServerStatus = ServerStatus,
-	tServerStatus = t.keyOf(ServerStatus),
+	GameLoadStatus = GameLoadStatus,
+	tGameLoadStatus = t.keyOf(GameLoadStatus),
 }
 
 return GameEnums
