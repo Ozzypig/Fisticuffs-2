@@ -1,4 +1,7 @@
 --!strict
+--[=[
+	@class Client
+]=]
 
 local Client = {}
 

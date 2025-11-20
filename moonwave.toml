@@ -1,0 +1,29 @@
+title = "Fisticuffs 2"
+gitRepoUrl = "https://github.com/Ozzypig/Fisticuffs-2"
+
+gitSourceBranch = "main"
+changelog = true
+classOrder = []
+
+[docusaurus]
+onBrokenLinks = "warn"
+onBrokenMarkdownLinks = "warn"
+favicon = "favicon.ico"
+
+# From git:
+organizationName = "Ozzypig"
+projectName = "Fisticuffs 2"
+# url = "" # This moonwave site is not available on the public web
+baseUrl = "/Fisticuffs-2"
+tagline = "Ozzypig"
+
+[footer]
+style = "dark"
+copyright = "© Ozzypig 2025"
+
+# [[footer.links]]
+# title = "examples"
+
+# [[footer.links.items]]
+# label = "example"
+# href = "https://example.com/"

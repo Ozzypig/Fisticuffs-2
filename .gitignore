@@ -1,6 +1,19 @@
-# Wally
-Packages
-ServerPackages
+# Roblox place/model files
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+
+# Roblox Studio lock file
+*.lock
 
 # Rojo
 sourcemap.json
+
+# Wally
+Packages
+ServerPackages
+.wally-installed
+
+# Moonwave
+build

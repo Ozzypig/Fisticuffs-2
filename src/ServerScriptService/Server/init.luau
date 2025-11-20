@@ -1,4 +1,7 @@
 --!strict
+--[=[
+	@class Server
+]=]
 
 local Server = {}
 
