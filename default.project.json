@@ -1,22 +1,25 @@
 {
-  "name": "Fisticuffs-2",
+  "name": "Fisticuffs 2",
   "tree": {
     "$className": "DataModel",
     "ReplicatedStorage": {
+      "$ignoreUnknownInstances": true,
+      "Client": {
+        "$path": "src/ReplicatedStorage/Client"
+      },
       "Shared": {
-        "$path": "src/shared"
+        "$path": "src/ReplicatedStorage/Shared"
+      },
+      "Packages": {
+        "$path": "Packages"
       }
     },
     "ServerScriptService": {
       "Server": {
-        "$path": "src/server"
-      }
-    },
-    "StarterPlayer": {
-      "StarterPlayerScripts": {
-        "Client": {
-          "$path": "src/client"
-        }
+        "$path": "src/ServerScriptService/Server"
+      },
+      "ServerPackages": {
+        "$path": "ServerPackages"
       }
     }
   }
