@@ -12,6 +12,9 @@
       },
       "Packages": {
         "$path": "Packages"
+      },
+      "GameVersion": {
+        "$path": "GameVersion.txt"
       }
     },
     "ServerScriptService": {
