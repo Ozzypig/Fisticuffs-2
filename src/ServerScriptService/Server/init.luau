@@ -13,7 +13,7 @@ local LoadUtil = require(ReplicatedStorage.Shared.LoadUtil)
 
 local Server = {}
 
-local ClientLoadStatus = require(script.ClientLoadStatus)
+local _ClientLoadStatus = require(script.ClientLoadStatus)
 local ServerLoadStatus = require(script.ServerLoadStatus)
 
 local logger = Logging:getLogger("Server")
