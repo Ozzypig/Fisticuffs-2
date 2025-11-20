@@ -2,10 +2,19 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Promise = require(ReplicatedStorage.Packages.Promise)
+local Logging = require(ReplicatedStorage.Packages.Logging)
 
 local Features = require(ReplicatedStorage.Shared.Features)
 
 local LoadUtil = {}
+
+function LoadUtil.InitLogging()
+	-- TODO: Configure via instance attribute
+	Logging:basicConfig({
+		level = Logging.Level.Debug,
+		format = "[%(name)s:%(level)s] %(message)s",
+	})
+end
 
 function LoadUtil.EachFeatureCallAsync(logger: any, moduleName: string, methodName: string): Promise.Promise<>
 	local promises: { Promise.Promise<> } = {}

@@ -9,7 +9,6 @@ local Logging = require(ReplicatedStorage.Packages.Logging)
 local Promise = require(ReplicatedStorage.Packages.Promise)
 
 local LoadUtil = require(ReplicatedStorage.Shared.LoadUtil)
-local initLogging = require(ReplicatedStorage.Shared.initLogging)
 
 local Client = {}
 
@@ -24,7 +23,7 @@ function Client.Start(): Promise.Promise<>
 end
 
 function Client.Main()
-	initLogging()
+	LoadUtil.InitLogging()
 	return Promise.resolve()
 		:andThenCall(logger.debug, logger, "Main")
 		:andThenCall(Client.Init)
