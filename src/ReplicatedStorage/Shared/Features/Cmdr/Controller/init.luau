@@ -1,19 +1,22 @@
 --!strict
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Logging = require(ReplicatedStorage.Packages.Logging)
+
 local CmdrClient
+local logger = Logging:getLogger("CmdrController")
 
 local CmdrController = {}
 
 function CmdrController.Init()
 	-- https://eryn.io/Cmdr/guide/Setup.html
 	CmdrClient = (require :: any)(ReplicatedStorage:WaitForChild("CmdrClient"))
-	print("CmdrController initialized")
+	logger:debug("Required CmdrClient")
 end
 
 function CmdrController.Start()
 	CmdrClient:SetActivationKeys({ Enum.KeyCode.F2 })
-	print("CmdrController started")
+	logger:debug("Set activation keys")
 end
 
 return CmdrController

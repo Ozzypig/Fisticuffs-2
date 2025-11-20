@@ -20,4 +20,9 @@ dependencies = []
 [[package]]
 name = "ozzypig/fisticuffs-2"
 version = "0.1.0"
-dependencies = [["t", "osyrisrblx/t@3.1.1"], ["Cmdr", "evaera/cmdr@1.12.0"], ["ProfileStore", "lm-loleris/profilestore@1.0.3"]]
+dependencies = [["Logging", "ozzypig/logging@0.3.0"], ["t", "osyrisrblx/t@3.1.1"], ["Cmdr", "evaera/cmdr@1.12.0"], ["ProfileStore", "lm-loleris/profilestore@1.0.3"]]
+
+[[package]]
+name = "ozzypig/logging"
+version = "0.3.0"
+dependencies = []
