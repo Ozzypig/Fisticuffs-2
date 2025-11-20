@@ -25,26 +25,22 @@ export type Feature = {
 
 local Features: { Feature } = {}
 
-for _, child in script:GetChildren() do
-	if child:IsA("ModuleScript") then
-		-- :: any cast silences "unsupported require path" warning
-		local feature = (require :: any)(child)
-		assert(typeof(feature) == "table", "Feature module did not return a table.")
-		feature.Name = child.Name
-		local isValid, err = tFeature(feature)
-		if isValid then
-			-- :: Feature cast is safe here due to the type check above
-			Features[child.Name] = feature :: Feature
-		else
-			error(("Feature '%s' is malformed: %s"):format(child.Name, err))
-		end
-	else
-		error(("Unexpected child '%s' in Features folder; expected only ModuleScripts."):format(child.Name))
-	end
-end
+local children: { Instance } = script:GetChildren()
 
-table.sort(Features, function(featureLHS: Feature, featureRHS: Feature): boolean
-	return featureLHS.Name < featureRHS.Name
+-- ensure consistent loading order by requiring in alphabetical order
+table.sort(children, function(childLHS, childRHS)
+	return childLHS.Name < childRHS.Name
 end)
+
+for _, child in children do
+	assert(child:IsA("ModuleScript"), "Expected only ModuleScripts in Features folder.")
+	-- :: any cast silences "unsupported require path" warning
+	local feature = (require :: any)(child)
+	assert(typeof(feature) == "table", "Feature module did not return a table.")
+	feature.Name = child.Name
+	assert(tFeature(feature))
+	-- :: Feature cast is safe here due to the type check above
+	table.insert(Features, feature :: Feature)
+end
 
 return Features
